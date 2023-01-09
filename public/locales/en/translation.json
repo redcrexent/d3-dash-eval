@@ -1,0 +1,16 @@
+{
+
+    "intro.label": "Hello",
+
+    "thankyou.label": "Thank you",
+    "Dashboard": "Dashboard",
+    "nasdaq": "Nasdaq 100",
+    "djia": "DJIA",
+    "oil": "Crude Oil",
+    "gold": "Gold",
+    "current.price": "Current Price",
+    "sales.overview": "Sales Overview",
+    "lastweek": "since last week",
+    "in2021":"in 2021",
+    "Year":"Year"
+}
