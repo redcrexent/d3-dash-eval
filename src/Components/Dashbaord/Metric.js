@@ -3,7 +3,7 @@ import SparkChart from "../Chart/SparkChart";
 
 function Metric({ MetricName, MetricValue, Change, dataset }) {
   return (
-    <div className="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4  ">
+    <div className="w-full max-w-full px-1 mb-6 sm:w-full lg:w-1/2 md:w-1/2 sm:flex-none xl:mb-0 xl:w-1/3  ">
       <div className="relative flex flex-col min-w-0 break-words bg-white rounded-2xl bg-clip-border">
         <div className="flex-auto p-4 shadow-lg rounded-lg">
           <div className="flex flex-row">

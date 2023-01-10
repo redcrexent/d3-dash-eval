@@ -33,12 +33,7 @@ function TopBar() {
           Change="2.78"
           dataset={nas100}
         />
-        <Metric
-          MetricName={t("djia")}
-          MetricValue="33630.61"
-          Change="2.13"
-          dataset={djia}
-        />
+
         <Metric
           MetricName={t("oil")}
           MetricValue="73.38"

@@ -13,7 +13,7 @@ function BarChart({ render }) {
     const svgElement = d3.select(ref.current);
 
     svgElement.selectAll("svg > *").remove();
-    const width = 350;
+    const width = 300;
     const height = 200;
 
     let keydata = [];
@@ -46,8 +46,9 @@ function BarChart({ render }) {
       }),
     ]);
     let g = svgElement
-      .attr("width", width + 50)
-      .attr("height", height + 70)
+      // .attr("width", width + 50)
+      // .attr("height", height + 70)
+      .attr("viewBox", "0 0 " + (width+20) + " " + (height + 30) + "")
       .append("g")
       .attr("transform", "translate(" + 30 + "," + 5 + ")");
 
