@@ -7,7 +7,7 @@ function Metric({ MetricName, MetricValue, Change, dataset }) {
       <div className="relative flex flex-col min-w-0 break-words bg-white rounded-2xl bg-clip-border">
         <div className="flex-auto p-4 shadow-lg rounded-lg">
           <div className="flex flex-row">
-            <div>
+            <div className="w-5/12">
               <p className="mb-0 font-sans font-bold leading-normal text-lg">
                 {MetricName}
               </p>
@@ -22,7 +22,7 @@ function Metric({ MetricName, MetricValue, Change, dataset }) {
                 </span>
               </h5>
             </div>
-            <div className="px-3 text-right mt-3">
+            <div className="w-3/5 px-3 text-right mt-3">
               <SparkChart
                 data={dataset}
                 pcolor={Change > 0 ? "green" : "red"}

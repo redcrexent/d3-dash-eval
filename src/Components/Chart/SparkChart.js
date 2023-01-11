@@ -14,7 +14,7 @@ function SparkChart({ data, pcolor }) {
 
     svgElement.selectAll("svg > *").remove();
 
-    const WIDTH = 205;
+    const WIDTH = 300;
     const HEIGHT = 30;
     const MARGIN = { top: 5, right: 5, bottom: 5, left: 5 };
     const INNER_WIDTH = WIDTH - MARGIN.left - MARGIN.right;
@@ -41,8 +41,9 @@ function SparkChart({ data, pcolor }) {
     console.log(color);
     if (min != null) {
       svgElement
-        .attr("width", WIDTH)
-        .attr("height", HEIGHT)
+        // .attr("width", WIDTH)
+        // .attr("height", HEIGHT)
+        .attr("viewBox", "0 0 " + (WIDTH + 20) + " " + HEIGHT + "")
         .append("g")
         .attr("transform", "translate(" + MARGIN.left + "," + MARGIN.top + ")");
 
