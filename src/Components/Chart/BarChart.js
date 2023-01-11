@@ -45,10 +45,13 @@ function BarChart({ render }) {
         return d.price;
       }),
     ]);
+
+    
+
     let g = svgElement
       // .attr("width", width + 50)
       // .attr("height", height + 70)
-      .attr("viewBox", "0 0 " + (width+20) + " " + (height + 30) + "")
+      .attr("viewBox", "0 0 " + (width + 20) + " " + (height + 30) + "")
       .append("g")
       .attr("transform", "translate(" + 30 + "," + 5 + ")");
 
@@ -66,16 +69,12 @@ function BarChart({ render }) {
           .tickPadding(i18n.language === "ar" ? 15 : 5)
           .ticks(10)
       )
-      .attr("saf", "asf")
+
       .append("text")
-      .attr("saf", "asf")
-      .attr("transform", "translate(-10,0)")
       .attr("y", 6)
       .attr("dy", "0.71em")
       .attr("transform", "translate(10,0)")
       .text("value");
-
-    //g.selectAll("text").attr("transform", "translate(-10,0)");
 
     g.selectAll(".bar")
       .data(keydata)

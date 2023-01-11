@@ -25,7 +25,7 @@ function Metric({ MetricName, MetricValue, Change, dataset }) {
             <div className="w-3/5 px-3 text-right mt-3">
               <SparkChart
                 data={dataset}
-                pcolor={Change > 0 ? "green" : "red"}
+                pcolor={Change > 0 ? "rgb(190 242 100)" : "rgb(252 165 165)"}
               />
             </div>
           </div>

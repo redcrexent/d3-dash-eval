@@ -34,45 +34,96 @@ function SparkChart({ data, pcolor }) {
     let min = Math.min(...key);
     let max = Math.max(...key);
     const data = d3.range([DATA_COUNT]).map((d) => key[d]);
-    const x = d3.scaleLinear().domain([d1, d2]).range([0, INNER_WIDTH]);
 
+
+
+
+    const x = d3.scaleLinear().domain([d1, d2]).range([0, INNER_WIDTH]);
     const y = d3.scaleLinear().domain([min, max]).range([INNER_HEIGHT, 1]);
 
-    console.log(color);
-    if (min != null) {
-      svgElement
-        // .attr("width", WIDTH)
-        // .attr("height", HEIGHT)
-        .attr("viewBox", "0 0 " + (WIDTH + 20) + " " + HEIGHT + "")
-        .append("g")
-        .attr("transform", "translate(" + MARGIN.left + "," + MARGIN.top + ")");
+  
 
-      const line = d3
-        .line()
-        .x((d, i) => x(i))
-        .y((d) => y(d));
+    let Gradientid = "gradient" + Math.random() * 50;
+    svgElement
+      .append("defs")
+      .append("linearGradient")
+      .attr("id", Gradientid)
+      .attr("x1", 0).attr("y1", 0)			
+      .attr("x2", 0).attr("y2",1)	
+      // .attr("x1", "0")
+      // .attr("y1", "0")
+      // .attr("x2", "0")
+      // .attr("y2", "1");
+
+    svgElement
+      .selectAll("linearGradient")
+      .append("stop")
+      .attr("offset", "0")
+      .attr("stop-color", color)
+      .attr("stop-opacity", "0.5");
+
+    svgElement
+      .selectAll("linearGradient")
+      .append("stop")
+      .attr("offset", "1")
+      .attr("stop-color", color)
+      .attr("stop-opacity", "0");
+
+    svgElement
+      .attr("viewBox", "0 0 " + (WIDTH + 20) + " " + HEIGHT + "")
+      .append("g")
+      .attr("transform", "translate(" + MARGIN.left + "," + MARGIN.top + ")");
+
+    const line = d3
+      .line()
+      .x((d, i) => x(i))
+      .y((d) => y(d));
+
+
+      var	area = d3.area()	
+      .x((d, i) => x(i))
+    .y0(HEIGHT)					
+    .y1((d) => y(d));
+     
+
+    svgElement
+      .append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke-width", 4)
+      .attr("d", line)
+      .attr("stroke", color);
+
 
       svgElement
-        .append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", color)
-        .attr("stroke-width", 1)
-        .attr("d", line);
+      .append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke-width", 3)
+      .attr("d", area)
+      .attr("fill", "url(#" + Gradientid + ")");
 
-      svgElement
-        .append("circle")
-        .attr("r", 2)
-        .attr("cx", x(0))
-        .attr("cy", y(keydata[0]))
-        .attr("fill", "steelblue");
-      svgElement
-        .append("circle")
-        .attr("r", 2)
-        .attr("cx", x(DATA_COUNT - 1))
-        .attr("cy", y(keydata[DATA_COUNT - 1]))
-        .attr("fill", "tomato");
-    }
+      // svgElement
+      // .append("path")
+      // .datum(data)
+      // .attr("fill", "none")
+      // .attr("stroke-width", 3)
+      // .attr("d", area)
+      // .attr("fill", "url(#" + Gradientid + ")");
+
+    svgElement
+      .append("circle")
+      .attr("r", 2)
+      .attr("cx", x(0))
+      .attr("cy", y(keydata[0]))
+      .attr("fill", "steelblue");
+
+    svgElement
+      .append("circle")
+      .attr("r", 2)
+      .attr("cx", x(DATA_COUNT - 1))
+      .attr("cy", y(keydata[DATA_COUNT - 1]))
+      .attr("fill", "tomato");
   }, [color, keydata, data]);
 
   return (
